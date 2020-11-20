@@ -6,16 +6,23 @@ spring:
           useInsecureTrustManager: true
       routes:
         - id: greeting-external
-          uri: https://${GREETING_EXTERNAL_SERVICE}/
+          uri: lb:https://greeting-external-service
           predicates:
             - Path=/greeting-external/**
         - id: greeting
-          uri: https://${GREETING_SERVICE}/
+          uri: lb:https://greeting-service
           predicates:
             - Path=/greeting/**
 
+server:
+  ssl:
+    enabled: true
+    key-store-type: AzureKeyVault
+    key-alias: ${SERVER_SSL_CERTIFICATE_NAME}
+
 azure:
   keyvault:
+    uri: ${KEY_VAULT_URI}
     jca:
       overrideTrustManagerFactory: true
       disableHostnameVerification: true
