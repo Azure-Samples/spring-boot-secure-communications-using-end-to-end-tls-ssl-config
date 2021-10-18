@@ -2,6 +2,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: greeting-external-without-keyvault-plugin
+          uri: lb://greeting-external-service-without-keyvault-plugin/
+          predicates:
+            - Path=/greeting-external-without-keyvault-plugin/**
         - id: greeting-external
           uri: lb://greeting-external-service/
           predicates:
