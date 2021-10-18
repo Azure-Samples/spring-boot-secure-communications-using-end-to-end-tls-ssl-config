@@ -7,7 +7,7 @@ application:
 
 spring:
   webflux:
-    base-path: /greeting-external-without-keyvault-plugin
+    base-path: /greeting-external-v2
 
 feign:
   hystrix:
