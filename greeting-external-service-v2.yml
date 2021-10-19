@@ -5,9 +5,9 @@ application:
       endpoint: ${EXTERNAL_SERVICE_ENDPOINT}
       port: ${EXTERNAL_SERVICE_PORT}
 
-spring:
-  webflux:
-    base-path: /greeting-external-v2
+server:
+  servlet:
+    context-path: /greeting-external-v2
 
 feign:
   hystrix:
